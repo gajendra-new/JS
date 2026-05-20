@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur Code</title>
+
+</head>
+<body style="background-color: black; color: white;">
+    <ul class="languages">
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>Java</li>
+        <li>C++</li>
+
+    </ul>
+    
+</body>
+
+<script>
+    function addlanguage(langname){
+       
+        const li=document.createElement("li")
+        li.innerHTML=`${langname}`
+        document.querySelector(".languages").appendChild(li)
+    }
+    addlanguage("Go")
+    addlanguage("Rust")
+
+    function addOptiLanguage(langname){
+        const option=document.createElement('li')
+     option.appendChild(document.createTextNode(langname))
+     document.querySelector(".languages").appendChild(option)
+    }
+
+    // optimized approach reason being we are not using innerHTML and instead using createTextNode which is faster and more secure as it does not parse the string as HTML
+
+
+    //Edit
+    function editLanguage(oldname,newname){
+        const languages=document.querySelector(".languages")
+        for(let i=0;i<languages.children.length;i++){
+            if(languages.children[i].innerHTML===oldname){
+                languages.children[i].innerHTML=newname
+                break
+            }
+        }
+    }
+
+    editLanguage("Go","Golang")
+
+
+    //remove
+    function removeLanguage(langname){
+        const languages=document.querySelector(".languages")
+        for(let i=0;i<languages.children.length;i++){
+            if(languages.children[i].innerHTML===langname){
+                languages.removeChild(languages.children[i])
+                break
+            }
+        }
+    }
+    removeLanguage("Rust")
+</script>
+</html>
